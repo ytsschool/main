@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %}Главная{% endblock %}
+{% block content %}
+<h3><a href="/home">Главная страница</a></h3><p>Это главная страница</p>
+<h3><a href="/home">Главная страница</a></h3><p>Это главная страница</p>
+<h3><a href="/home">Главная страница</a></h3><p>Это главная страница</p>
+<h3><a href="/home">Главная страница</a></h3><p>Это главная страница</p>
+<h3><a href="/home">Главная страница</a></h3><p>Это главная страница</p>
+<h3><a href="/home">Главная страница</a></h3><p>Это главная страница</p>
+{% for app in applist %}<h3><a href="{{app.link}}">{{app.name}}</a></h3><p>{{app.description}}</p>{% endfor %}
+{% endblock %}
