@@ -1,0 +1,17 @@
+{% for f in form.hidden_fields %}
+    {{ f }}
+{% endfor %}
+
+
+{% for f in form.visible_fields %}
+    <div class="form-group {% if f.errors %}has-error{% endif %}">
+        {{ f.label_tag }}
+        {{ f }}
+
+        {% if f.errors %}
+            <span class="help-block">{{ f.errors|join:', ' }}</span>
+        {% elif f.help_text %}
+            <span class="help-block ">{{ f.help_text }}</span>
+        {% endif %}
+    </div>
+{% endfor %}

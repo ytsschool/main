@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Удаление файла {{ file }}{% endblock %}
+{% block header %}Удаление файла {{ file }}{% endblock %}
+
+{% block content %}
+    <div class="alert alert-warning">
+        <p>Вы собираетесь удалить {{ file }}. Это действие нельзя отменить.</p>
+
+        <form method="post">
+            {% csrf_token %}
+            <input type="submit" value="Удалить" class="btn btn-danger" />
+            <a href="{% url "file_manager" %}">Отмена</a>
+        </form>
+    </div>
+{% endblock %}
