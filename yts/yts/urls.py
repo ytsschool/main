@@ -19,4 +19,5 @@ urlpatterns = patterns('',
     url(r'^home/$', views.home),
     url(r'^blog/',include('ContributionBlog.urls')),
     url(r'^cryptopage/',include('cryptopage.urls')),
+    url(r'^polls/',include('polls.urls')),                       
 )  + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
