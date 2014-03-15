@@ -20,4 +20,5 @@ urlpatterns = patterns('',
     url(r'^home/$', views.home),
     url(r'^blog/',include('ContributionBlog.urls',namespace="blog")),
     url(r'^cryptopage/',include('cryptopage.urls',namespace="cryptopage")),
+    url(r'^testme/', include('testme.urls', namespace="testme")),
 )  + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

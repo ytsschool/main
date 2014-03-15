@@ -1,0 +1,47 @@
+{% extends "testme/base.html" %}
+{% load future %}
+
+{% block header %}Баги, баги{% endblock %}
+
+{% block app_content %}
+    {% if files.count %}
+        <table class="table table-hover table-condensed">
+            <thead>
+                <tr>
+                    <th>Название</th>
+                    <th>Дата создания</th>
+                    <th>Размер</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for file in files %}
+                    <tr>
+                        <td>{{ file }}</td>
+                        <td>{{ file.created }}</td>
+                        <td>{{ file.file.size|filesizeformat }}</td>
+                        <td>
+                            <a href="{% url "testme:delete_file" file.pk %}">Удалить</a>
+                        </td>
+                        <td>
+                            <a href="{% url "testme:download_file" file.pk %}">Скачать</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>Загрузите файл с помощью формы снизу.</p>
+    {% endif %}
+
+    <hr />
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% include "snippets/form.html" %}
+        <input type="submit" class="btn btn-primary" value="Загрузить" />
+    </form>
+
+{% endblock %}

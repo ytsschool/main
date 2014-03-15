@@ -2,6 +2,7 @@
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
+UPLOAD_DIR = './upload'
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
@@ -64,6 +65,7 @@ STATIC_URL = '/static/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
+    "static/",
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -123,6 +125,7 @@ INSTALLED_APPS = (
     'main',
     'cryptopage',
     'ContributionBlog',
+    'testme',
 )
 
 # A sample logging configuration. The only tangible logging
