@@ -12,9 +12,8 @@ class CommitInfo(models.Model):
     revision = models.IntegerField(blank=False)
     project = models.ForeignKey(Project)
     commitMessage = models.TextField(default='')
-    filesRemoved = models.IntegerField(default=0)
-    filesAdded = models.IntegerField(default=0)
-    filesModified = models.IntegerField(default=0)
+    filesChanged = models.IntegerField(default=0)
+    linesModified = models.IntegerField(default=0)
     linesAdded = models.IntegerField(default=0)
     linesRemoved = models.IntegerField(default=0)
     class Meta:
