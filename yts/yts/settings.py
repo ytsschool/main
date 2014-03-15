@@ -125,11 +125,8 @@ INSTALLED_APPS = (
     'main',
     'cryptopage',
     'ContributionBlog',
-<<<<<<< HEAD
     'polls',
-=======
     'testme',
->>>>>>> c73df655c998f34c22d250cfcc1cc27aaabc443f
 )
 
 # A sample logging configuration. The only tangible logging
