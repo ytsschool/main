@@ -31,7 +31,11 @@ def postCommitMessage(request):
                        'user',
                        'project',
                        'revision',
-                       'auth']
+                       'auth',
+                       'inserted',
+                       'deleted',
+                       'modified',
+                       'files',]
     for i in required_fields:
         if not i in request.GET:
             return HttpResponseBadRequest('BAD parameters')
@@ -55,6 +59,10 @@ def postCommitMessage(request):
     try:
         newCommit.revision = int(request.GET['revision'])
         newCommit.commitMessage = request.GET['message']
+        newCommit.filesChanged = int(request.GET['files'])
+        newCommit.linesAdded = int(request.GET['inserted'])
+        newCommit.linesRemoved = int(request.GET['deleted'])
+        newCommit.linesModified = int(request.GET['modified'])
     except ValueError:
         return HttpResponseBadRequest('BAD parameters')
     try:
