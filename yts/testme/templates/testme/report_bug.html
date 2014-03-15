@@ -1,0 +1,15 @@
+{% extends "testme/base.html" %}
+{% load future %}
+
+
+{% block header %}Я нашел баг{% endblock %}
+
+
+{% block app_content %}
+    <form method="post">
+        {% csrf_token %}
+        {% include "snippets/form.html" %}
+        <input type="submit" value="Сохранить" class="btn btn-primary" />
+    </form>
+
+{% endblock %}

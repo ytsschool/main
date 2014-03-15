@@ -3,6 +3,7 @@ from main import views
 from django.conf.urls.static import static
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
+from django.conf import settings
 admin.autodiscover()
 
 urlpatterns = patterns('',
@@ -15,9 +16,15 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^$', views.home),
+    url(r'^$', views.home,name='index'),
     url(r'^home/$', views.home),
+<<<<<<< HEAD
     url(r'^blog/',include('ContributionBlog.urls')),
     url(r'^cryptopage/',include('cryptopage.urls')),
     url(r'^polls/',include('polls.urls')),                       
+=======
+    url(r'^blog/',include('ContributionBlog.urls',namespace="blog")),
+    url(r'^cryptopage/',include('cryptopage.urls',namespace="cryptopage")),
+    url(r'^testme/', include('testme.urls', namespace="testme")),
+>>>>>>> c73df655c998f34c22d250cfcc1cc27aaabc443f
 )  + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

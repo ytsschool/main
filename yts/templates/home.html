@@ -2,9 +2,9 @@
 {% block title %}Главная{% endblock %}
 {% block content %}
 <h3><a href="/home">Главная страница</a></h3><p>Это главная страница</p>
-<h3><a href="{% url 'ContributionBlog:index' %}">Blog</a></h3><p>Это главная страница</p>
-<h3><a href="{% url 'cryptopage:index' %}">Главная страница</a></h3><p>Это главная страница</p>
-<h3><a href="/home">Главная страница</a></h3><p>Это главная страница</p>
+<h3><a href="{% url 'blog:index' page=1 %}">Blog</a></h3><p>Это блог</p>
+<h3><a href="{% url 'cryptopage:index' %}">Криптостраница</a></h3><p>Разгадай загадку</p>
+<h3><a href="{% url 'testme:index' %}">testme</a></h3><p></p>
 <h3><a href="/home">Главная страница</a></h3><p>Это главная страница</p>
 <h3><a href="/home">Главная страница</a></h3><p>Это главная страница</p>
 {% for app in applist %}<h3><a href="{{app.link}}">{{app.name}}</a></h3><p>{{app.description}}</p>{% endfor %}

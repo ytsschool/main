@@ -32,7 +32,7 @@ def delete_file(request, pk):
     if request.method == 'POST':
         file.delete()
         messages.success(request, u'Файл удален')
-        return redirect('file_manager')
+        return redirect('testme:file_manager')
     else:
         return render(request, 'testme/confirm_file_deletion.html', {'file': file})
 
@@ -56,7 +56,7 @@ def report_bug(request):
         if form.is_valid():
             form.save()
             messages.success(request, u'Баг сохранен')
-            return redirect("file_manager")
+            return redirect("testme:file_manager")
 
     else:
         form = ReportBugForm()
@@ -67,4 +67,4 @@ def report_bug(request):
 
 
 def main(request):
-    return redirect('file_manager')
+    return redirect('testme:file_manager')
