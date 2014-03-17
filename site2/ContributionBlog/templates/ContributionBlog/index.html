@@ -21,7 +21,7 @@
 <body>
     {% for commit in object_list %}
         <div class="jumbotron">
-            <h2><a class="username" href="{% url 'blog:userIndex' user=commit.user.name page=1%}">{{ commit.user.name }}</a> contributed in {{ commit.project.name }}:{{ commit.revision }} </h2>
+            <h2><a class="username" href="{% url 'blog:userIndex' user=commit.user.name page=1%}">{{ commit.user.name }}</a> contributed to {{ commit.project.name }}:{{ commit.revision }} </h2>
             <p>{{ commit.commitMessage }}</p>
             <p>LOC:<span class="LOC-new">{{ commit.linesAdded }}</span>/<span class="LOC-modified">{{ commit.linesModified }}</span>/<span class="LOC-deleted">{{ commit.linesRemoved }}</span></p>
             <p>FILES: {{ commit.filesChanged }}</p>
