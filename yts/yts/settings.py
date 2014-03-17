@@ -127,6 +127,7 @@ INSTALLED_APPS = (
     'ContributionBlog',
     'polls',
     'testme',
+    'advert',
 )
 
 # A sample logging configuration. The only tangible logging
