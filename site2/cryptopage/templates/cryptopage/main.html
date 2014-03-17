@@ -1,0 +1,11 @@
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'cryptopage/style.css' %}" />
+
+<p><span style="color: red;">There</span> is luck in odd numbers.</p>
+<p>Encrypted text:</p>
+<p>{{ new_text }}</p>
+
+<form action="/cryptopage/main/check/" method="post">{% csrf_token %}
+{{ form.as_p }}
+<input type="submit" value="Submit" />
+</form>
