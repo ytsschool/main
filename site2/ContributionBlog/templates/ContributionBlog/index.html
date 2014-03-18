@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% if title %} {{ title }} {% else %} Commit history{% endif %}</title>
+
+    <!-- Bootstrap -->
+    {% load staticfiles %}
+    <link href="{% static "blog/css/bootstrap.min.css" %}" rel="stylesheet">
+    <link href="{% static "blog/css/blog.css" %}" rel="stylesheet">
+       <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+    {% for commit in object_list %}
+        <div class="jumbotron">
+            <h2><a class="username" href="{% url 'blog:userIndex' user=commit.user.name page=1%}">{{ commit.user.name }}</a> contributed to {{ commit.project.name }}:{{ commit.revision }} </h2>
+            <p>{{ commit.commitMessage }}</p>
+            <p>LOC:<span class="LOC-new">{{ commit.linesAdded }}</span>/<span class="LOC-modified">{{ commit.linesModified }}</span>/<span class="LOC-deleted">{{ commit.linesRemoved }}</span></p>
+            <p>FILES: {{ commit.filesChanged }}</p>
+            <p class="commit-date"><font size=-1>{{ commit.commitDate }}</font></p>
+        </div>
+    {% empty %}
+        <h1>Nothing here yet</h1>
+    {% endfor %}
+    {%  if is_paginated %}
+        <div>
+            <span class="page-links">
+                {% if page_obj.has_previous %}
+                    <a href="
+                    {% if user_name %}
+                        {% url 'blog:userIndex' user=user_name page=page_obj.previous_page_number %}
+                    {% else %}
+                        {% url 'blog:index' page=page_obj.previous_page_number %}
+                    {% endif %}
+                        ">previous</a>
+                {% endif %}
+                {% if page_obj.has_next %}
+                    <a href="
+                    {% if user_name %}
+                        {% url 'blog:userIndex' user=user_name page=page_obj.next_page_number %}
+                    {% else %}
+                        {% url 'blog:index' page=page_obj.next_page_number %}
+                    {% endif %}
+                    ">next</a>
+                {% endif %}
+            </span>
+        </div>
+    {% endif %}
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="{% static "blog/js/bootstrap.min.js" %}"></script>
+</body>
+</html>

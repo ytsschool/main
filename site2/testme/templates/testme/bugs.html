@@ -1,0 +1,30 @@
+{% extends "testme/base.html" %}
+{% load future %}
+
+{% block header %}Найденные баги{% endblock %}
+
+
+{% block app_content %}
+    {% if bugs.count %}
+
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Название</th>
+                    <th>Найден</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for bug in bugs %}
+                    <tr>
+                        <td>{{ bug }}</td>
+                        <td>{{ bug.created }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    {% else %}
+        <p>Багов не найдено</p>
+    {% endif %}
+{% endblock %}

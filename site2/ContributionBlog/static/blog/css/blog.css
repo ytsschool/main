@@ -1,0 +1,31 @@
+.username
+{
+    /**/
+    color: darkblue;
+}
+.username:active
+{
+    text-decoration: none;
+}
+.username:hover
+{
+    text-decoration: none;
+    color: #00009b;
+}
+.commit-date
+{
+    text-align: right;
+    font-size-adjust: -1;
+}
+.LOC-new
+{
+    color: darkgreen;
+}
+.LOC-modified
+{
+    color: darkblue;
+}
+.LOC-deleted
+{
+    color: darkred;
+}
