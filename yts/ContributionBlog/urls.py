@@ -8,7 +8,7 @@ from ContributionBlog import views
 
 urlpatterns = patterns('',
     url(r'^post',views.postCommitMessage,name='postCommitMessage'),
-    url(r'^user_(?P<user>[A-z0-9]*)/(?P<page>[0-9]+)$',views.CommitsView.as_view(),name='userIndex'),
+    url(r'^user_(?P<user>[^/]*)/(?P<page>[0-9]+)$',views.CommitsView.as_view(),name='userIndex'),
     url(r'^(?P<page>[0-9]+)$',views.CommitsView.as_view(),name='index'),
     #url(r'^$',RedirectView.as_view(url='ya.ru')),
 )
