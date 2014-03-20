@@ -1,9 +1,9 @@
-﻿<html>
-<head>
+﻿{% extends "base.html" %}
 {% load staticfiles %}
-<meta http-equiv="Content-Type" content="/text/html; charset=utf-8">
-    <title>Проверь свои знания =)</title>
-	<link rel="shortcut icon" type="image/x-icon" href="{% static 'polls/images/knife.ico' %}" />
+
+{% block include %}
+	<meta http-equiv="Content-Type" content="/text/html; charset=utf-8">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'polls/images/knife.ico' %}" />
 
 	<script type="text/javascript" src="{% static 'polls/js/jquery-1.11.0.js' %}" ></script>
 	<script type="text/javascript" src="{% static 'polls/js/bootstrap.min.js' %}"></script>
@@ -16,8 +16,13 @@
 	<link rel="stylesheet" type="text/css" href="{% static 'polls/bootstrap-theme.min.css' %}" />
 	<link rel="stylesheet" type="text/css" href="{% static 'polls/variables.less' %}" />
 	<link rel="stylesheet" type="text/css" href="{% static 'polls/bootswatch.less' %}" />
-</head>
-<body>
+{% endblock %}
+
+{% block title %}
+	Проверь свои знания =)
+{% endblock %}
+
+{% block content %}
 <div class="container">
 	<div class="jumbotron">
 			<h2>Проверь свою эрудицию!  ☺</h2>
@@ -31,7 +36,7 @@
           </div>
          </div>
 	</div>
-	<div class="page-header">
+	<!-- <div class="page-header"> -->
 	
 	<form  method="post" action="{% url 'polls:vote' %}">
 	{% csrf_token %}
@@ -97,8 +102,6 @@
 	
 	</form>		
 
-	</div>
-
+	<!-- </div> -->
 </div>
-</body>
-</html>
+{% endblock %}
