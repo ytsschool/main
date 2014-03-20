@@ -1,8 +1,8 @@
-﻿<html>
-<head>
+﻿{% extends "base.html" %}
 {% load staticfiles %}
-<meta http-equiv="Content-Type" content="/text/html; charset=utf-8">
-    <title>Резюме =)</title>
+
+{% block include %}
+	<meta http-equiv="Content-Type" content="/text/html; charset=utf-8">
 	<link rel="shortcut icon" type="image/x-icon" href="{% static 'polls/images/knife.ico' %}" />
 
 	<script type="text/javascript" src="{% static 'polls/js/jquery-1.11.0.js' %}" ></script>
@@ -16,8 +16,13 @@
 	<link rel="stylesheet" type="text/css" href="{% static 'polls/bootstrap-theme.min.css' %}" />
 	<link rel="stylesheet" type="text/css" href="{% static 'polls/variables.less' %}" />
 	<link rel="stylesheet" type="text/css" href="{% static 'polls/bootswatch.less' %}" />
-</head>
-<body>
+{% endblock %}
+
+{% block title %}
+	Резюме =)
+{% endblock %}
+
+{% block content %}
 <div class="container">
 	<div class="jumbotron">
 		<h2>Резюме ☺</h2>
@@ -30,6 +35,8 @@
 {% endfor %}
 </ul>
 <a href="{% url 'polls:index' %}">Пройти тест еще раз?</a>
+
 </div>
-</body>
-</html>
+
+
+{% endblock %}
